@@ -24,7 +24,7 @@ if __name__ == '__main__':
     tf.app.flags.DEFINE_string('data_info', './data/data_info.txt', 'the file saving data information')
     tf.app.flags.DEFINE_string('train_data', './data/train_data.txt', 'the file saving training data')
     tf.app.flags.DEFINE_string('test_data', './data/test_data.txt', 'the file saving testing data')
-    tf.app.flags.DEFINE_string('lex_embedd_path', './resrc/lexicon_embedding', 'the file saving lexicon embedding')
+    tf.app.flags.DEFINE_string('lex_embedd_path', './vec/lexicon_embedding', 'the file saving lexicon embedding')
 
     data = {"word2vec": None, "word2id": None, "max_aspect_len": None, "max_context_len": None, "lex_dim": None}
 

@@ -28,7 +28,7 @@ if __name__ == '__main__':
     tf.app.flags.DEFINE_string('test_data', './data/test_data.txt', 'the file saving testing data')
     tf.app.flags.DEFINE_string('lex_path', './resrc/lexicons/lex_config.txt', 'the file saving testing data')
     tf.app.flags.DEFINE_integer('seed', 12345, 'The random seed')
-    tf.app.flags.DEFINE_string('lex_embedd_path', './resrc/lexicon_embedding', 'the file saving lexicon embedding')
+    tf.app.flags.DEFINE_string('lex_embedd_path', './vec/lexicon_embedding', 'the file saving lexicon embedding')
     tf.app.flags.DEFINE_string('checkpoint_path',
                                '',
                                'the file model')
