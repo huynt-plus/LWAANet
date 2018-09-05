@@ -1,7 +1,7 @@
 # LWAANets
 ## A Lexicon-Aware Word-Aspect Attention Network
 
-The implementation of the paper: "LWAANet: A Lexicon-Aware Word-Aspect Attention Network for Aspect-level Sentiment Classification on Social Networking"
+The implementation of the paper: "*LWAANet: A Lexicon-Aware Word-Aspect Attention Network for Aspect-level Sentiment Classification on Social Networking*"
 
 ### Word & Lexicon Embeddings
 
