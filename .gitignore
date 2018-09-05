@@ -106,3 +106,4 @@ venv.bak/
 vec/
 resrc/lexicon_embedding
 logs/
+.vscode/settings.json
