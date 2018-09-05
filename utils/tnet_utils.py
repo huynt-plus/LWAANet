@@ -3,8 +3,8 @@ import pickle, os
 import string
 import codecs
 
-def build_dataset(ds_name, doc_name, bs, dim_w, dim_func):
-    dataset, vocab = load_data(ds_name=ds_name, doc_name=doc_name)
+def build_dataset(ds_name, bs, dim_w, dim_func):
+    dataset, vocab = load_data(ds_name=ds_name)
     n_train = len(dataset[0])
     n_test = len(dataset[1])
     embeddings = get_embedding(vocab, ds_name, dim_w)
@@ -74,7 +74,7 @@ def build_vocab(dataset):
 def get_func_words():
     vocab_func = {}
     # auxiliary verbs, conjunctions, determiners, prepositions, pronouns, quantifiers
-    with open('./data/func_words.txt') as fp:
+    with open('./dataset/func_words.txt') as fp:
         for line in fp:
             w = line.strip()
             if w not in vocab_func:
@@ -137,16 +137,7 @@ def word2fid(vocab, vocab_func, sent, max_len):
         fids.append(0)
     return fids
 
-def load_data(ds_name, doc_name):
-    """
-    """
-    if doc_name in ['lt']:
-        doc_file = './data/data_doc/electronics_large/text.txt'
-    else:
-        doc_file = './data/data_doc/yelp_large/text.txt'
-
-    doc_set = read_doc(path=doc_file)
-
+def load_data(ds_name):
     train_file = './dataset/%s/train.txt' % ds_name
     test_file = './dataset/%s/test.txt' % ds_name
     train_set = read(path=train_file)
@@ -169,7 +160,7 @@ def load_data(ds_name, doc_name):
     train_set = calculate_position_weight(dataset=train_set)
     test_set = calculate_position_weight(dataset=test_set)
 
-    vocab = build_vocab(dataset=train_set+test_set+doc_set)
+    vocab = build_vocab(dataset=train_set+test_set)
 
     vocab_func = get_func_words()
 
@@ -230,40 +221,6 @@ def pad_dataset(dataset, bs):
     new_dataset = [t for t in dataset]
     new_dataset.extend(dataset[:n_padded])
     return new_dataset
-
-def read_doc(path):
-    """
-    """
-    import re
-    num_regex = re.compile('^[+-]?[0-9]+\.?[0-9]*$')
-    def is_number(token):
-        return bool(num_regex.match(token))
-
-
-    dataset = []
-    record = {}
-    sid = 0
-    fin = codecs.open(path, 'r', 'utf-8')
-    for line in fin:
-        tokens = line.split()
-        words = []
-        for w in tokens:
-            if not is_number(w):
-                words.append(w)
-
-        record['sent'] = None
-        record['words'] = words.copy()
-        record['twords'] = None
-        record['wc'] = len(words) # word count
-        record['wct'] = None  # target word count
-        record['dist'] = None  # relative distance
-        record['sid'] = sid
-        record['beg'] = None
-        record['end'] = None
-        # note: if aspect is single word, then aspect
-        sid += 1
-        dataset.append(record)
-    return dataset
 
 def read(path):
     """

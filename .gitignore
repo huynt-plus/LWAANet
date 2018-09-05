@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+vec/
+resrc/lexicon_embedding
+logs/

@@ -17,7 +17,6 @@ if __name__ == '__main__':
     tf.app.flags.DEFINE_float('dropout', 0.5, 'dropout')
 
     tf.app.flags.DEFINE_string('domain', 'twitter', 'Domain')
-    tf.app.flags.DEFINE_string('doc_domain', 'yelp_large.txt', 'Domain')
     tf.app.flags.DEFINE_string('embedding_fname', './vec/glove.42B.300d.txt', 'embedding file name')
     tf.app.flags.DEFINE_string('embedding', 'glove', 'oov')
     tf.app.flags.DEFINE_string('train_fname', './data/laptop/train.txt', 'training file name')
@@ -31,7 +30,6 @@ if __name__ == '__main__':
     if FLAGS.domain == 'twitter' or FLAGS.domain == '14semeval_rest' or FLAGS.domain == '14semeval_laptop':
         dataset, data["word2vec"], embeddings_func, n_train, n_test, data["word2id"] = tnet_utils.build_dataset(
                                                                                             ds_name=FLAGS.domain,
-                                                                                            doc_name=FLAGS.doc_domain,
                                                                                             bs=FLAGS.batch_size,
                                                                                             dim_w=300, dim_func=10)
 

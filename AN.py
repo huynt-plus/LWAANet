@@ -17,7 +17,6 @@ if __name__ == '__main__':
     tf.app.flags.DEFINE_float('dropout', 0.5, 'dropout')
 
     tf.app.flags.DEFINE_string('domain', 'twitter', 'Domain')
-    tf.app.flags.DEFINE_string('doc_domain', 'yelp_large', 'Domain')
     tf.app.flags.DEFINE_string('embedding_fname', './vec/glove.42B.300d.txt', 'embedding file name')
     tf.app.flags.DEFINE_string('embedding', 'glove', 'oov')
     tf.app.flags.DEFINE_string('train_fname', './data/laptop/train.txt', 'training file name')
@@ -31,7 +30,6 @@ if __name__ == '__main__':
 
     if FLAGS.domain == 'twitter' or FLAGS.domain == '14semeval_rest' or FLAGS.domain == '14semeval_laptop':
         dataset, data["word2vec"], embeddings_func, n_train, n_test, data["word2id"] = tnet_utils.build_dataset(ds_name=FLAGS.domain,
-                                                                                               doc_name=FLAGS.doc_domain,
                                                                                                bs=FLAGS.batch_size,
                                                                                                dim_w=300, dim_func=10)
         train_set, test_set = dataset
@@ -62,23 +60,6 @@ if __name__ == '__main__':
 
         test_aspect_lens, test_context_lens = [len(x["twords"]) for x in test_set], \
                                               [len(x["words"]) for x in test_set]
-
-    else:
-        print('Loading data info ...')
-        data["word2id"], data["max_aspect_len"], data["max_context_len"] = get_data_info(FLAGS.train_fname, FLAGS.test_fname,
-                                                                                   FLAGS.data_info, FLAGS.pre_processed)
-
-        print('Loading training data and testing data ...')
-        train_aspects, train_contexts, train_labels, \
-        train_aspect_lens, train_context_lens = read_data(FLAGS.train_fname, data["word2id"], data["max_aspect_len"], data["max_context_len"],
-                               FLAGS.train_data, FLAGS.pre_processed)
-
-        test_aspects, test_contexts, test_labels, \
-        test_aspect_lens, test_context_lens = read_data(FLAGS.test_fname, data["word2id"], data["max_aspect_len"], data["max_context_len"], FLAGS.test_data,
-                              FLAGS.pre_processed)
-
-        print('Loading pre-trained word vectors ...')
-        data["word2vec"] = load_word_embeddings(FLAGS.embedding_fname, FLAGS.embedding_dim, data["word2id"])
 
 
     train_data = list(zip(train_aspects, train_contexts, train_labels, train_aspect_lens,
