@@ -110,10 +110,8 @@ if __name__ == '__main__':
                     test_context_lens, test_aspect_lex, test_context_lex))
 
     with tf.Session() as sess:
-        model = ALAN_model(FLAGS, sess, data)
+        model = LWAAN_model(FLAGS, sess, data)
         model.build_model()
         model.train(sess, train_data, test_data)
-    # model.checkpoint_dir = "logs/1524146194_r0.001_b100_h300_e300/checkpoints/model-4292"
-    # get_atts(test_data, model.checkpoint_dir)
     print("model=ALAN, model_path=%s, embedding=%s, batch-size=%s, n_epoch=%s, n_hidden=%s, domain=%s" % (
         model.out_dir, FLAGS.embedding, FLAGS.batch_size, FLAGS.n_epoch, FLAGS.n_hidden, FLAGS.domain))

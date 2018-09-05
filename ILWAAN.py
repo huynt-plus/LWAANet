@@ -120,7 +120,7 @@ if __name__ == '__main__':
                          test_context_lens, test_aspect_lex, test_context_lex))
 
     with tf.Session() as sess:
-        model = IALSTM_LEX(FLAGS, sess, data)
+        model = ILWAAN_model(FLAGS, sess, data)
         model.build_model()
         if FLAGS.checkpoint_path == '':
             model.train(train_data, test_data)
