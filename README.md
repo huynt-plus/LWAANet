@@ -3,9 +3,13 @@
 
 The implementation of the paper: "LWAANet: A Lexicon-Aware Word-Aspect Attention Network for Aspect-level Sentiment Classification on Social Networking"
 
+### Word Embeddings
+
+[Glove 42B](https://nlp.stanford.edu/projects/glove/) is used for word embeddings
+
 ### Lexicon Embeddings
 
-[Pretrained-Lexicon Embeddings](https://drive.google.com/open?id=1CB1dyhsRGMk0El9ileUgLk49jepHoPjY)
+[Preconstructed-Lexicon Embeddings](https://drive.google.com/open?id=1CB1dyhsRGMk0El9ileUgLk49jepHoPjY)
 
 ### Running Models
 
