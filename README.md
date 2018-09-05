@@ -11,6 +11,22 @@ Creating *vec* folder and copying *Glove* and *Lexicon* embeddings into this fol
 
 [Preconstructed-Lexicon Embeddings](https://drive.google.com/open?id=1CB1dyhsRGMk0El9ileUgLk49jepHoPjY)
 
+### Hyper-parameters
+
+*Random search* is used for choosing *Hyper-parameters*
+
+| Hyper-parameters| #Latop #Restaurant #Twitter |
+| ----------------|:---------------------------:|
+| Mini-batch size | 100                         |
+| Embedding dim   | 300                         |
+| Lexicon dim     | 16                          |
+| Epochs          | 300                         |
+| RNN dim         | 100                         |
+| Learning rate   | 2e-3                        |
+| Dropout rate    | 0.5                         |
+| L2 Constrain    | 1e-5                        |
+
+
 ### Running Models
 
 Running AN model:
