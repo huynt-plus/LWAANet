@@ -11,6 +11,9 @@ Creating *vec* folder and copying *Glove* and *Lexicon* embeddings into this fol
 
 [Preconstructed-Lexicon Embeddings](https://drive.google.com/open?id=1CB1dyhsRGMk0El9ileUgLk49jepHoPjY)
 
+### Pre-trained Models
+[Preconstructed-Lexicon Embeddings](https://drive.google.com/open?id=1nGXusK8_wVX5n1oed81Us2818qZGKr_x)
+
 ### Hyper-parameters
 
 *Random search* is used for choosing *Hyper-parameters*
